@@ -38,6 +38,7 @@ local music = nil
 function PlayMapMusic()
     if (music != nil && music:IsPlaying()) then music:Stop() end
     music = ReadSound( "coduo/music/pf_frantic.mp3" )
+	music:ChangeVolume(0.8)
 end
 
 function StopMapMusic()
