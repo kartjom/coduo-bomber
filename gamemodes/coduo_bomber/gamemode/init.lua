@@ -3,6 +3,7 @@ AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
 
 /* Include Client Files (see cl_init.lua) */
+AddCSLuaFile( "client/cl_menu.lua" )
 
 /* Include Server Files */
 include( "shared.lua" )
@@ -11,6 +12,7 @@ include( "server/initialize.lua" )
 include( "server/utility.lua" )
 include( "server/ai_b17_logic.lua" )
 include( "server/enemy_fighters_logic.lua" )
+include( "server/net_messages.lua" )
 //include( "server/debug.lua" ) // stuff for creating waypoints
 
 function GM:PlayerSpawn(ply)
@@ -41,7 +43,7 @@ function GM:PlayerSpray(ply)
 end
 
 function GM:PlayerNoClip(ply)
-	return GetConVar("sv_cheats"):GetBool()
+	return GetGlobalBool("BOMBER_SANDBOX_TOGGLED")
 end
 
 function GM:PlayerEnteredVehicle(ply, veh, nrole)
@@ -67,6 +69,8 @@ function GM:CanPlayerEnterVehicle(ply, veh, role)
 		else
 			return true
 		end
+	else
+		return true
 	end
 end
 

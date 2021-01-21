@@ -167,16 +167,3 @@ function DropBombs()
     end
 
 end
-
-/* Syncing sequences between server and clients */
-util.AddNetworkString("NET_ANIM_RESET")
-
-function PlayAnimation(ent, anim)
-    net.Start("NET_ANIM_RESET")
-        net.WriteEntity(ent)
-        net.WriteInt(anim, 4)
-    net.Broadcast()
-
-    ent:ResetSequence(anim)
-    ent:SetCycle(0)
-end

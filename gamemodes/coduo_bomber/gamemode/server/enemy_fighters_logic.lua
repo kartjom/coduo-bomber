@@ -7,11 +7,7 @@ function EnemyFightersLogic()
         if (CurTime() >= NextDummyAttackerSpawn) then
             NextDummyAttackerSpawn = CurTime() + 2.5
 
-            local me = ents.Create("ai_me109")
-            me:StartHunting(table.Random(ents.GetBombers()))
-            me:SetPos(table.Random(ME109_HUNT_SPAWNS))
-            me:SetAngles(me:GetRotationTowardsTarget(me.Target))
-            me:Spawn()
+            FighterAttackFriendlies()
         end
     end)
     
@@ -23,12 +19,24 @@ function EnemyFightersLogic()
 			local cooldownScale = 1.6 * ( (#ents.GetBombers() / 18) - 1 )
             NextPlayerAttackerSpawn = CurTime() + 2.75 + (-cooldownScale)
 
-            local me = ents.Create("ai_me109")
-            me:AttackPlayerBomber()
-            me:FollowWaypoints(ME109_WAYPOINTS[math.random(1, #ME109_WAYPOINTS)], 1, true)
-            me:Spawn()
+            FighterAttackPlayer()
         end
     end)
+end
+
+function FighterAttackFriendlies()
+	local me = ents.Create("ai_me109")
+	me:StartHunting(table.Random(ents.GetBombers()))
+	me:SetPos(table.Random(ME109_HUNT_SPAWNS))
+	me:SetAngles(me:GetRotationTowardsTarget(me.Target))
+	me:Spawn()
+end
+
+function FighterAttackPlayer()
+	local me = ents.Create("ai_me109")
+	me:AttackPlayerBomber()
+	me:FollowWaypoints(ME109_WAYPOINTS[math.random(1, #ME109_WAYPOINTS)], 1, true)
+    me:Spawn()
 end
 
 function StartEnemyFighters()

@@ -44,6 +44,8 @@ function BindEntities()
 
     BOMBER_FLAK_BARRAGE = false
     BOMBER_ENEMY_FIGHTERS = false
+
+    SetGlobalBool("BOMBER_SANDBOX_TOGGLED", false)
 end
 
 function CleanUpTimers()
