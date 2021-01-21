@@ -2,6 +2,7 @@ include( "shared.lua" )
 
 /* Include Client Files (see init.lua) */
 include( "client/cl_menu.lua" )
+include( "client/cl_voice_menu.lua" )
 include( "client/cl_music.lua" )
 
 function StartExplosionShock()

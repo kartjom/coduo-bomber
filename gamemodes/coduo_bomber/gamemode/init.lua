@@ -4,6 +4,7 @@ AddCSLuaFile( "shared.lua" )
 
 /* Include Client Files (see cl_init.lua) */
 AddCSLuaFile( "client/cl_menu.lua" )
+AddCSLuaFile( "client/cl_voice_menu.lua" )
 AddCSLuaFile( "client/cl_music.lua" )
 
 /* Include Server Files */
@@ -22,8 +23,8 @@ function GM:PlayerSpawn(ply)
 	ply:AllowFlashlight(true)
 
 	ply:SetWalkSpeed(100)
-	ply:SetRunSpeed(200)
-	ply:SetMaxSpeed(200)
+	ply:SetRunSpeed(160)
+	ply:SetMaxSpeed(160)
 
 	ply:CrosshairDisable()
 	ply:SetCollisionGroup(COLLISION_GROUP_WEAPON)

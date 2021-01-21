@@ -54,7 +54,6 @@ net.Receive("PLAY_MUSIC", function()
 		BOMBER_NEXT_MUSIC = CurTime() + 83
     	PlayMapMusic()
 	end)
-
 end)
 
 net.Receive("STOP_MUSIC", function()

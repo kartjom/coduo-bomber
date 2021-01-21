@@ -1,5 +1,5 @@
 function AddButton(text, color, pos, size, func)
-    local btn = vgui.Create("DButton", Frame)
+    local btn = vgui.Create("DButton", UtilityMenu)
     btn:SetText( text )
     btn:SetTextColor( color )
     btn:SetPos( pos[1], pos[2] )
@@ -9,16 +9,12 @@ function AddButton(text, color, pos, size, func)
     end
     function btn.DoClick()
         func()
-        Frame:Close()
+        UtilityMenu:Close()
     end
 end
 
 function GM:SpawnMenuOpen()
     return true
-end
-
-function GM:ContextMenuOpen()
-    return false
 end
 
 hook.Add("SpawnMenuOpen", "SpawnMenuAllowed", function()
@@ -28,12 +24,12 @@ end )
 hook.Add("OnSpawnMenuOpen", "OpenUtilityMenu", function()
     if ( !LocalPlayer():IsAdmin() ) then return end
 
-    Frame = vgui.Create( "DFrame" )
-    Frame:SetTitle( "Useful stuff" )
-    Frame:SetSize( 300,300 )
-    Frame:Center()			
-    Frame:MakePopup()
-    function Frame.Paint( self, w, h )
+    UtilityMenu = vgui.Create( "DFrame" )
+    UtilityMenu:SetTitle( "Useful stuff" )
+    UtilityMenu:SetSize( 300,300 )
+    UtilityMenu:Center()			
+    UtilityMenu:MakePopup()
+    function UtilityMenu.Paint( self, w, h )
         draw.RoundedBox( 0, 0, 0, w, h, Color( 0, 0, 0, 180 ) )
     end
 
@@ -70,5 +66,5 @@ hook.Add("OnSpawnMenuOpen", "OpenUtilityMenu", function()
 end)
 
 hook.Add("OnSpawnMenuClose", "CloseUtilityMenu", function()
-    if (IsValid(Frame)) then Frame:Close() end
+    if (IsValid(UtilityMenu)) then UtilityMenu:Close() end
 end)
