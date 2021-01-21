@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/cloth_o_br_prps_parachute2"
+	$alphatest 1
+}

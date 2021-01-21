@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/glass_blend_out_v_rs_air_p47_canopy"
+	$alphatest 1
+}

@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/c_br_bombrcrw_hat_pilot_1"
+	$alphatest 1
+}

@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/objective_o_br_prp_fireextinguisher"
+	$alphatest 1
+}

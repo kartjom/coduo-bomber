@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/body_characterhand"
+	$alphatest 1
+}

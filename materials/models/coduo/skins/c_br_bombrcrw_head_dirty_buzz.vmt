@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/c_br_bombrcrw_head_dirty_buzz"
+	$alphatest 1
+}

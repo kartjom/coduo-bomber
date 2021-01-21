@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/glass_light_bulb_p"
+	$alphatest 1
+}

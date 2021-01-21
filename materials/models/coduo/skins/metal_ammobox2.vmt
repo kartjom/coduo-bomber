@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/metal_ammobox2"
+	$alphatest 1
+}

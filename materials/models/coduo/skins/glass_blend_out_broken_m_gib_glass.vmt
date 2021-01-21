@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/glass_blend_out_broken_m_gib_glass"
+	$alphatest 1
+}

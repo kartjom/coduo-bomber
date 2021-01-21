@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/v_ge_air_stuka(d)"
+	$alphatest 1
+}

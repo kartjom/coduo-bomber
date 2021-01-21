@@ -1,0 +1,5 @@
+"LightmappedGeneric"
+{
+	$basetexture "coduo/ground/m_bomberocean_a"
+	$translucent "1"
+}

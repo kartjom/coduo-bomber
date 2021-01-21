@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/airplane_metal_masked_v_us_air_b_17_l_wing_dmg2"
+	$alphatest 1
+	$nocull 1
+}

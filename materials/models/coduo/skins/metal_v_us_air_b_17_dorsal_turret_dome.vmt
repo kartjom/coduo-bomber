@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/metal_v_us_air_b_17_dorsal_turret_dome"
+	$alphatest 1
+}

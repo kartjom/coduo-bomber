@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/bomber_v_us_air_b_17_cock_chair_left"
+	$alphatest 1
+}

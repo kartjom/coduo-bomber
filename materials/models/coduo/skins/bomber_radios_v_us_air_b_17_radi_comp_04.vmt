@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/bomber_radios_v_us_air_b_17_radi_comp_04"
+	$alphatest 1
+}

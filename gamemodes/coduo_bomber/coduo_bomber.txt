@@ -1,0 +1,7 @@
+"coduo_bomber"
+{
+	"title"	"Call of Duty: United Offensive"
+	"base"	"sandbox"
+	"menusystem" "1"
+	"maps" "^coduo_bomber"
+}

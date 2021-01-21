@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/metal_masked_browningbarrel"
+	$alphatest 1
+}

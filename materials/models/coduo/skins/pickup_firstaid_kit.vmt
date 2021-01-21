@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/pickup_firstaid_kit"
+	$alphatest 1
+}

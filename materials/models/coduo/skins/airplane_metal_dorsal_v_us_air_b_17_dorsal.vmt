@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/airplane_metal_dorsal_v_us_air_b_17_dorsal"
+	$alphatest 1
+}

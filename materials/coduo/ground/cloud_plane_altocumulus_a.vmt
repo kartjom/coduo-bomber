@@ -1,0 +1,17 @@
+"LightmappedGeneric"
+{
+	$basetexture "coduo/ground/cloud_plane_altocumulus_a"
+	$translucent 1
+	$alpha 0.75
+	$color "{ 126 117 117 }"
+
+	"Proxies"
+	{
+		"TextureScroll"
+		{
+			"textureScrollVar" "$basetexturetransform"
+			"textureScrollRate" 0.016
+			"textureScrollAngle" 30
+		}
+	}
+}

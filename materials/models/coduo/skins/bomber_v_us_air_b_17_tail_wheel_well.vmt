@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/bomber_v_us_air_b_17_tail_wheel_well"
+	$alphatest 1
+}

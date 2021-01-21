@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/metal_masked_prop_p47_prop"
+	$alphatest 1
+}

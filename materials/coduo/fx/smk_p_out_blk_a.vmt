@@ -1,0 +1,8 @@
+"SpriteCard"
+{
+	$basetexture "coduo/fx/smk_p_out_blk_a"
+	$translucent 1
+	$surfaceprop "no_decal"
+	$vertexcolor 1
+	$vertexalpha 1
+}

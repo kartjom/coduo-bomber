@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	$basetexture "models/coduo/skins/airplane_metal_masked_v_br_air_spitfire(d)"
+	$alphatest 1
+}
