@@ -39,12 +39,20 @@ function FighterAttackPlayer()
     me:Spawn()
 end
 
+util.AddNetworkString("PLAY_MUSIC")
 function StartEnemyFighters()
     BOMBER_ENEMY_FIGHTERS = true
+
+	net.Start("PLAY_MUSIC")
+	net.Broadcast()
 end
 
+util.AddNetworkString("STOP_MUSIC")
 function StopEnemyFighters()
     BOMBER_ENEMY_FIGHTERS = false
+
+	net.Start("STOP_MUSIC")
+	net.Broadcast()
 
     timer.Remove("EVENT_MANAGER_FIGHTERS_START")
     timer.Remove("EVENT_MANAGER_FIGHTERS_STOP")
