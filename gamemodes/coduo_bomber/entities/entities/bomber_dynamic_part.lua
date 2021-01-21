@@ -8,7 +8,7 @@ if (SERVER) then
 
     ENT.PartName = ""
 
-    ENT.MaxHealth = 525
+    ENT.MaxHealth = 650
     ENT.ShakeOnDamage = true
     ENT.SoundOnDamage = true
 

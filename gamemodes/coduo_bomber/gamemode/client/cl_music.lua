@@ -47,9 +47,17 @@ function StopMapMusic()
 end
 
 net.Receive("PLAY_MUSIC", function()
-    PlayMapMusic()
+	BOMBER_NEXT_MUSIC = 0
+	hook.Add("Think", "BomberMusicManager", function()
+		if (CurTime() <= BOMBER_NEXT_MUSIC) then return end
+
+		BOMBER_NEXT_MUSIC = CurTime() + 83
+    	PlayMapMusic()
+	end)
+
 end)
 
 net.Receive("STOP_MUSIC", function()
+	hook.Remove("Think", "BomberMusicManager")
     StopMapMusic()
 end)

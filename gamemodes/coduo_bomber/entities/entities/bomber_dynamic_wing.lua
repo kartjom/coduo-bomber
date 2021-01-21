@@ -11,7 +11,7 @@ if (SERVER) then
     ENT.InnerPropellerOffset = Vector()
     ENT.OuterPropellerOffset = Vector()
 
-    ENT.MaxHealth = 2250
+    ENT.MaxHealth = 4250
 
     ENT.CanTakeDamage = true
     ENT.OnFire = false
