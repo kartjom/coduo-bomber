@@ -6,6 +6,7 @@ AddCSLuaFile( "shared.lua" )
 AddCSLuaFile( "client/cl_menu.lua" )
 AddCSLuaFile( "client/cl_voice_menu.lua" )
 AddCSLuaFile( "client/cl_music.lua" )
+AddCSLuaFile( "client/cl_hud.lua" )
 
 /* Include Server Files */
 include( "shared.lua" )

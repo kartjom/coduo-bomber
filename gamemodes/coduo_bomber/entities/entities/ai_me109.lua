@@ -283,6 +283,11 @@ if (SERVER) then
         if (!self.OnFire && self.Durability <= 75) then
             self:SetOnFire()
 
+            local attacker = dmginfo:GetAttacker()
+            if (attacker:IsPlayer()) then
+                attacker:AddFrags(1)
+            end
+
             if ( math.random(0, 100) >= 33 ) then
                 self:StartSpinning()
             end

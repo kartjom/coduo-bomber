@@ -50,6 +50,11 @@ if (SERVER) then
 		bullet.TracerName = "AR2Tracer"
 		bullet.Force  = 10
 		bullet.Damage = self.Primary.Damage
+
+        if (self:GetParent().Owner:IsPlayer()) then
+            bullet.Attacker = self:GetParent().Owner
+        end
+        
 		self.mz1:FireBullets(bullet)
         
         bullet.Src = self:LocalToWorld(self.MuzzlePos2)

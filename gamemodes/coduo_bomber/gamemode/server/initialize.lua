@@ -5,6 +5,7 @@ util.AddNetworkString("NET_START_BLUR")
 util.AddNetworkString("NET_STOP_BLUR")
 
 function InitializeMap()
+    CleanUpPlayers()
     CleanUpTimers()
     CleanUpHooks()
 
@@ -68,4 +69,8 @@ function CleanUpHooks()
     for name,event in pairs(HooksList) do hook.Remove(event, name) end
 
     HooksList = {} // must be global
+end
+
+function CleanUpPlayers()
+    for k,v in pairs(player.GetAll()) do v:SetFrags(0) end
 end

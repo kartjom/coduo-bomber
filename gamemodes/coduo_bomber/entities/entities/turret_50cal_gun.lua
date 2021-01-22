@@ -67,6 +67,10 @@ if (SERVER) then
 		bullet.Force  = 10
 		bullet.Damage = self.Primary.Damage
 
+        if (self:GetParent().Owner:IsPlayer()) then
+            bullet.Attacker = self:GetParent().Owner
+        end
+
 		self:FireBullets(bullet)
         self:EmitMuzzleFlash()
         self:EmitShells()
