@@ -12,6 +12,10 @@ if (SERVER) then
     ENT.ShakeOnDamage = true
     ENT.SoundOnDamage = true
 
+    ENT.FilterDamage = {
+        ["prop_dynamic"] = true
+    }
+
     function ENT:Initialize()
         self:SetName(self.PartName)
         self:SetModel("models/coduo/bomber/"..self.PartName.."_0.mdl")
@@ -30,6 +34,13 @@ if (SERVER) then
 
     function ENT:OnTakeDamage(hitInfo)
         if ( self:CanTakeDamage() ) then
+
+            /* Negate damage from friendly bombers */
+            local attacker = hitInfo:GetAttacker()
+            if (attacker != nil && attacker != NULL ) then
+                if ( self.FilterDamage[attacker:GetClass()] ) then return end
+            end
+
             local dmg = hitInfo:GetDamage()
             self.CurrentHealth = self.CurrentHealth - dmg
 
