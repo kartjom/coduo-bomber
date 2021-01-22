@@ -2,5 +2,5 @@
 "title" : "Call of Duty: United Offensive - Bomber",
 "type" : "gamemode",
 "tags" : ["roleplay","scenic"],
-"ignore" : ["*.psd", "*.vcproj", "*.svn*", "*.git*"]
+"ignore" : ["*.psd", "*.vcproj", "*.svn*"]
 }
