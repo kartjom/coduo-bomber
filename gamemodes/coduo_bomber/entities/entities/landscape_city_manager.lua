@@ -26,7 +26,7 @@ if (SERVER) then
         end)
         
         local tbl = { "small", "medium", "big" }
-        self:CreateCity(table.Random(tbl))
+        self:CreateCity( tbl[math.random(#tbl)] )
         
     end
 

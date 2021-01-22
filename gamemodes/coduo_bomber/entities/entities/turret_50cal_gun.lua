@@ -6,7 +6,6 @@ ENT.Primary = {}
 ENT.Primary.Delay = 0.1
 ENT.Primary.Recoil = 1
 ENT.Primary.Spread = 0.02
-ENT.Primary.Damage = 20
 ENT.Primary.Sound = Sound("Turret_50cal.Single")
 
 ENT.SmoothAngle = Angle()
@@ -65,7 +64,7 @@ if (SERVER) then
 		bullet.Tracer = 1
 		bullet.TracerName = "AR2Tracer"
 		bullet.Force  = 10
-		bullet.Damage = self.Primary.Damage
+		bullet.Damage = 15
 
         if (self:GetParent().Owner:IsPlayer()) then
             bullet.Attacker = self:GetParent().Owner

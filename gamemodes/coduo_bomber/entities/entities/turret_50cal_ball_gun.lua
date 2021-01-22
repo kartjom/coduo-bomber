@@ -67,7 +67,7 @@ if (SERVER) then
 		bullet.Tracer = 1
 		bullet.TracerName = "AR2Tracer"
 		bullet.Force  = 10
-		bullet.Damage = self.Primary.Damage
+		bullet.Damage = 10
         
         if (self:GetParent().Owner:IsPlayer()) then
             bullet.Attacker = self:GetParent().Owner

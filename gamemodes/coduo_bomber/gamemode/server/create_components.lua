@@ -29,6 +29,7 @@ function CreateTail_Waist()
     local r_tail = ents.Create("bomber_dynamic_part")
     r_tail.PartName = "r_tail"
     r_tail.MaxDamageLevel = 2
+    r_tail.MaxHealth = 300 // needs to be lower than rest because enemy planes rarely attack it
     r_tail:Spawn()
 
     local l_waist = ents.Create("bomber_dynamic_part")

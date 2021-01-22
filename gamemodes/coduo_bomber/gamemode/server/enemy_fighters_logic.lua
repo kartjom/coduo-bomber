@@ -25,9 +25,11 @@ function EnemyFightersLogic()
 end
 
 function FighterAttackFriendlies()
+	local bombers = ents.GetBombers()
+
 	local me = ents.Create("ai_me109")
-	me:StartHunting(table.Random(ents.GetBombers()))
-	me:SetPos(table.Random(ME109_HUNT_SPAWNS))
+	me:StartHunting( bombers[math.random(#bombers)] )
+	me:SetPos( ME109_HUNT_SPAWNS[math.random(#ME109_HUNT_SPAWNS)] ) 
 	me:SetAngles(me:GetRotationTowardsTarget(me.Target))
 	me:Spawn()
 end

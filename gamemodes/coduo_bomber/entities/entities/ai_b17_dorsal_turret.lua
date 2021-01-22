@@ -80,7 +80,8 @@ if (SERVER) then
 
     function ENT:FindNewTarget()
         local objects = ents.FindInSphere(self.Plane:GetPos(), self.Range)
-        local target = table.Random(self:FilterEnemyPlanes(objects))
+        local filtered = self:FilterEnemyPlanes(objects)
+        local target = filtered[math.random(#filtered)]
 
         if (target != nil && target != NULL) then
             self.Target = target
