@@ -1,8 +1,12 @@
+CreateClientConVar( "cl_draw_crosses", "1", true, false)
+
 local crossIcon = Material("coduo/hud/m_bomber_hud-icon.png")
 local iconSize = 32
 local maxKills = 50
 
 hook.Add("HUDPaint", "HUD_DrawCrosses", function()
+    if ( !GetConVar("cl_draw_crosses"):GetBool() ) then return end
+
     if ( !LocalPlayer():Alive() ) then return end
     if ( LocalPlayer():Frags() <= 0 ) then return end
 
