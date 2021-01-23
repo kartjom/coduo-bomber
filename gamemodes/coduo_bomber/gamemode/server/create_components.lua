@@ -115,6 +115,7 @@ function CreateRadioRoom()
                     v:TakeDamageInfo(dmg)
                 end
             end
+            
             ents.FindByName("ambient_changer")[1]:Fire("FireUser1")
             ents.FindByName("bomber_ambient_radio")[1]:Fire("PlaySound")
 

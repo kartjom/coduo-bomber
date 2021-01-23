@@ -5,6 +5,7 @@ include( "client/cl_menu.lua" )
 include( "client/cl_voice_menu.lua" )
 include( "client/cl_music.lua" )
 include( "client/cl_hud.lua" )
+include( "client/cl_dialogues.lua" )
 
 function StartExplosionShock()
     GetConVar("pp_motionblur"):SetBool(true)

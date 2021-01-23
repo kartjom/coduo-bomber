@@ -7,6 +7,7 @@ AddCSLuaFile( "client/cl_menu.lua" )
 AddCSLuaFile( "client/cl_voice_menu.lua" )
 AddCSLuaFile( "client/cl_music.lua" )
 AddCSLuaFile( "client/cl_hud.lua" )
+AddCSLuaFile( "client/cl_dialogues.lua" )
 
 /* Include Server Files */
 include( "shared.lua" )
@@ -16,6 +17,7 @@ include( "server/utility.lua" )
 include( "server/ai_b17_logic.lua" )
 include( "server/enemy_fighters_logic.lua" )
 include( "server/net_messages.lua" )
+include( "server/dialogues.lua" )
 //include( "server/debug.lua" ) // stuff for creating waypoints
 
 function GM:PlayerSpawn(ply)
