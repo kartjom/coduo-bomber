@@ -23,7 +23,9 @@ function DialoguePlayScene(sndTbl)
         
         if (i < #sndTbl) then
             delay = delay + sndTbl[i].delay + 0.5
-            TimerAdd("DIALOGUE_SCENE_"..i.."_"..CurTime(), delay, 1, function() SendDialogue( sndTbl[i+1].snd ) end)
+            TimerAdd("DIALOGUE_SCENE_"..i.."_"..CurTime(), delay, 1, function()
+                SendDialogue( sndTbl[i+1].snd )
+            end)
         end
     end
 end

@@ -9,7 +9,7 @@ function InitializeMap()
     CleanUpTimers()
     CleanUpHooks()
 
-    BindEntities()
+    UsefulVariables()
 
     CreateTail_Waist()
     CreateWings()
@@ -36,7 +36,7 @@ function InitializeMap()
     CloudsEmitter()
 end
 
-function BindEntities()
+function UsefulVariables()
     BOMBER_BOMB_BAY = ents.FindByName("bomb_bay_animated")[1]
     BOMBER_BOMB_BAY_CRANK = ents.FindByName("bomb_bay_crank_animated")[1]
 
@@ -45,6 +45,8 @@ function BindEntities()
 
     BOMBER_FLAK_BARRAGE = false
     BOMBER_ENEMY_FIGHTERS = false
+
+    BOMBER_FIRST_ENGINE_DOWN = false
 
     SetGlobalBool("BOMBER_SANDBOX_TOGGLED", false)
 end

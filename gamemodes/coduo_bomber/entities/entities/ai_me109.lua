@@ -36,7 +36,7 @@ if (SERVER) then
     ENT.ShootUntil = 0
     ENT.ShootTime = 2
     ENT.Damage = 27
-    ENT.DummyDamage = 8
+    ENT.DummyDamage = 12
 
     ENT.ShootDelay = 0.2
     ENT.NextShoot = CurTime()
@@ -286,6 +286,7 @@ if (SERVER) then
             local attacker = dmginfo:GetAttacker()
             if (attacker:IsPlayer()) then
                 attacker:AddFrags(1)
+                hook.Run("OnEnemyFighterKill", attacker)
             end
 
             if ( math.random(0, 100) >= 33 ) then

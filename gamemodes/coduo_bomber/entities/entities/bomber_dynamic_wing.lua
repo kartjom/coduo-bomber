@@ -68,7 +68,7 @@ if (SERVER) then
         self:StopSound("coduo/bomber/engine_fire.wav")
     end
 
-    function ENT:CreatePropellers() 
+    function ENT:CreatePropellers()
         self.InnerPropeller = ents.Create("prop_dynamic")
         self.InnerPropeller:SetModel("models/coduo/bomber/propeller_0.mdl")
         self.InnerPropeller:SetPos(self.InnerPropellerOffset)
@@ -82,6 +82,14 @@ if (SERVER) then
         self.OuterPropeller:SetAngles(Angle(0, 180, 0))
         self.OuterPropeller:SetName(self.PartName.."_propeller_outer")
         self.OuterPropeller:Spawn()
+
+        if (self.PartName == "l_wing") then
+            self.OuterPropeller.EngineNumber = 1
+            self.InnerPropeller.EngineNumber = 2
+        else
+            self.InnerPropeller.EngineNumber = 3
+            self.OuterPropeller.EngineNumber = 4
+        end
     end
 
     function ENT:CanTakeDamage()
@@ -119,11 +127,37 @@ if (SERVER) then
     function ENT:PostDamageComponent()
         if (self.CurrentDamageLevel == 1) then
         
-            // Randomizing the sequence for some variety       
+            // Randomizing the sequence for some variety
+            local engineType = nil
             if (math.random(0, 100) < 50) then
                 self:DamageEngine("inner")
+                engineType = self.InnerPropeller
             else
                 self:DamageEngine("outer")
+                engineType = self.OuterPropeller
+            end
+            
+            /* Pilot dialogue */
+            if ( !BOMBER_FIRST_ENGINE_DOWN ) then
+                TimerAdd("ENGINE_FIRE_"..engineType.EngineNumber, 0.5, 1, function()
+                    DialoguePlayScene({
+                        { snd = "coduo/voiceovers/engine_fire_"..engineType.EngineNumber..".mp3", delay = 3 },
+                        { snd = "coduo/voiceovers/engine_fuel_warning_1.mp3"}
+                    })
+                end)
+
+                BOMBER_FIRST_ENGINE_DOWN = true
+            else
+                local dialogue = ""
+                if (math.random(0, 100) >= 50) then
+                    dialogue = "coduo/voiceovers/engine_fire_"..engineType.EngineNumber..".mp3"
+                else
+                    dialogue = "coduo/voiceovers/engine_fuel_warning_2.mp3"
+                end
+                
+                TimerAdd("ENGINE_FIRE_"..engineType.EngineNumber, 0.5, 1, function()
+                    SendDialogue(dialogue)
+                end)
             end
         end
     end

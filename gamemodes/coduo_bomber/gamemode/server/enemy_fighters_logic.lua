@@ -34,11 +34,36 @@ function FighterAttackFriendlies()
 	me:Spawn()
 end
 
+BOMBER_NEXT_FIGHTER_SPAWN_COMMENT = 0
 function FighterAttackPlayer()
+	local waypoint = math.random(1, #ME109_WAYPOINTS)
+
 	local me = ents.Create("ai_me109")
 	me:AttackPlayerBomber()
-	me:FollowWaypoints(ME109_WAYPOINTS[math.random(1, #ME109_WAYPOINTS)], 1, true)
+	me:FollowWaypoints(ME109_WAYPOINTS[waypoint], 1, true)
     me:Spawn()
+
+	if (CurTime() <= BOMBER_NEXT_FIGHTER_SPAWN_COMMENT) then return end
+
+	if (math.random(0, 100) > 50) then
+		BOMBER_NEXT_FIGHTER_SPAWN_COMMENT = CurTime() + 20
+		GetDialogueFromWaypoint(waypoint)
+	end
+end
+
+function GetDialogueFromWaypoint(num)
+	local dialogue = 1
+	if (num >= 1 && num <= 10) then // 12
+		dialogue = "12_"..math.random(1, 2)
+	elseif (num >= 11 && num <= 19) then // 3
+		dialogue = "3_"..math.random(1, 3)
+	elseif (num >= 20 && num <= 28) then // 6
+		dialogue = "6_"..math.random(1, 6)
+	else // 9
+		dialogue = "9_"..math.random(1, 4)
+	end
+
+	SendDialogue("coduo/voiceovers/enemy_"..dialogue..".mp3")
 end
 
 util.AddNetworkString("PLAY_MUSIC")

@@ -45,12 +45,14 @@ end
 
 function CreateWaistTurrets()
     local lturret = ents.Create("turret_50cal_pod")
+    lturret:SetName("l_waist_turret")
     lturret:SetAngles(Angle())
     lturret:SetPos(Vector(63, 200, 0))
     lturret:Spawn()
     lturret:GetPhysicsObject():EnableMotion(false)
     
     local rturret = ents.Create("turret_50cal_pod")
+    rturret:SetName("r_waist_turret")
     rturret:SetAngles(Angle(0, 180, 0))
     rturret:SetPos(Vector(-65, 141, 0))
     rturret:Spawn()
@@ -59,6 +61,7 @@ end
 
 function CreateTailTurret()
     local tail_turret = ents.Create("turret_50cal_tail_pod")
+    tail_turret:SetName("tail_turret")
     tail_turret:SetAngles(Angle(0, 90, 0))
     tail_turret:SetPos(Vector(-0.5, 585, -14))
     tail_turret:Spawn()
@@ -67,6 +70,7 @@ end
 
 function CreateDorsalTurret()
     local dorsal_turret = ents.Create("turret_50cal_dorsal_pod")
+    dorsal_turret:SetName("dorsal_turret")
     dorsal_turret:SetAngles(Angle(0, -90, 0))
     dorsal_turret:SetPos(Vector(-2.65, -368.97, -10))
     dorsal_turret:Spawn()
@@ -75,6 +79,7 @@ end
 
 function CreateBallTurret()
     local ball_turret = ents.Create("turret_50cal_ball_pod")
+    ball_turret:SetName("ball_turret")
     ball_turret:SetAngles(Angle(0, -90, 0))
     ball_turret:SetPos(Vector(-2, 68, -12))
     ball_turret:Spawn()
