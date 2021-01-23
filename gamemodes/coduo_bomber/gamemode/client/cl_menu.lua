@@ -26,11 +26,16 @@ hook.Add("OnSpawnMenuOpen", "OpenUtilityMenu", function()
 
     UtilityMenu = vgui.Create( "DFrame" )
     UtilityMenu:SetTitle( "Useful stuff" )
-    UtilityMenu:SetSize( 300,300 )
-    UtilityMenu:Center()			
+    UtilityMenu:SetSize( 300,300 )	
     UtilityMenu:MakePopup()
     function UtilityMenu.Paint( self, w, h )
         draw.RoundedBox( 0, 0, 0, w, h, Color( 0, 0, 0, 180 ) )
+    end
+
+    if ( GetGlobalBool("BOMBER_SANDBOX_TOGGLED") ) then
+        UtilityMenu:SetPos(ScrW() - 400, ScrH() - 400)
+    else
+        UtilityMenu:Center()
     end
 
     /* AddButton(text, color, pos, size, func) */

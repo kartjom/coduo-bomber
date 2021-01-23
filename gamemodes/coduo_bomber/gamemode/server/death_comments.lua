@@ -36,7 +36,7 @@ hook.Add("OnEnemyFighterKill", "FighterDeathComments", function(ply)
     if (math.random(0, 100) > 75) then
         BOMBER_NEXT_FIGHTER_DEATH_COMMENT = CurTime() + 20
         TimerAdd("KILL_DIALOGUE", 0.5, 1, function()        
-            SendDialogue("coduo/voiceovers/kill_"..math.random(1, 3)..".mp3")
+            SendDialogue("coduo/voiceovers/kill_"..math.random(1, 6)..".mp3")
         end)
     end
 end)

@@ -53,7 +53,7 @@ net.Receive("PLAY_MUSIC", function()
 	hook.Add("Think", "BomberMusicRepeat", function()
 		if (SysTime() <= BOMBER_NEXT_MUSIC) then return end
 
-		BOMBER_NEXT_MUSIC = SysTime() + 83
+		BOMBER_NEXT_MUSIC = SysTime() + 83.5
     	PlayMapMusic()
 	end)
 end)
