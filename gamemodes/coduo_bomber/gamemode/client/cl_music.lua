@@ -27,7 +27,6 @@ local function ReadSound( FileName )
 		if CLIENT then
 			sound:Stop() -- it won't play again otherwise
 		end
-		sound:Play()
 	end
 	return sound -- useful if you want to stop the sound yourself
 end
@@ -36,20 +35,22 @@ local music = nil
 
 -- When we are ready, we play the sound:
 function PlayMapMusic()
-    if (music != nil && music:IsPlaying()) then music:Stop() end
-    music = ReadSound( "coduo/music/pf_frantic.mp3" )
+	if (music == nil) then music = ReadSound("coduo/music/pf_frantic.mp3") end
+
+	music:Stop()
+    music:Play()
 	music:ChangeVolume(0.8)
 end
 
 function StopMapMusic()
-    if (music != nil && music:IsPlaying()) then
-        music:FadeOut(3)
-    end
+    music:FadeOut(3)
 end
 
 net.Receive("PLAY_MUSIC", function()
+	hook.Remove("Think", "BomberMusicStop")
+
 	BOMBER_NEXT_MUSIC = 0
-	hook.Add("Think", "BomberMusicManager", function()
+	hook.Add("Think", "BomberMusicRepeat", function()
 		if (CurTime() <= BOMBER_NEXT_MUSIC) then return end
 
 		BOMBER_NEXT_MUSIC = CurTime() + 83
@@ -58,6 +59,17 @@ net.Receive("PLAY_MUSIC", function()
 end)
 
 net.Receive("STOP_MUSIC", function()
-	hook.Remove("Think", "BomberMusicManager")
+	hook.Remove("Think", "BomberMusicRepeat")
+
+	if (music == nil || music == NULL) then return end
+	if ( !music:IsPlaying() ) then return end
+	
     StopMapMusic()
+
+	hook.Add("Think", "BomberMusicStop", function()
+		if (music:IsPlaying() && music:GetVolume() <= 0.05) then
+			music:Stop()
+			hook.Remove("Think", "BomberMusicStop")
+		end
+	end)
 end)
