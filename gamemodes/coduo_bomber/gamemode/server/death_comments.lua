@@ -31,7 +31,7 @@ end)
 BOMBER_NEXT_FIGHTER_DEATH_COMMENT = 0
 
 hook.Add("OnEnemyFighterKill", "FighterDeathComments", function(ply)
-    if (CurTime() <= BOMBER_NEXT_FIGHTER_DEATH_COMMENT) then return end
+    if (CurTime() <= BOMBER_NEXT_FIGHTER_DEATH_COMMENT || !BOMBER_ENEMY_FIGHTERS) then return end
 
     if (math.random(0, 100) > 75) then
         BOMBER_NEXT_FIGHTER_DEATH_COMMENT = CurTime() + 20

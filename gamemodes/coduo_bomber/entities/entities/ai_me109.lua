@@ -36,7 +36,7 @@ if (SERVER) then
     ENT.ShootUntil = 0
     ENT.ShootTime = 2
     ENT.Damage = 27
-    ENT.DummyDamage = 10
+    ENT.DummyDamage = 12
 
     ENT.ShootDelay = 0.2
     ENT.NextShoot = CurTime()

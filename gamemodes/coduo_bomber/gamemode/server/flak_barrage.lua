@@ -35,6 +35,14 @@ function FlakBarrageLogic()
 
             if (CurTime() >= nextFlakSound) then
                 sound.Play("coduo/bomber/flak_burst_near0"..math.random(1, 5)..".wav", soundLocations[math.random(1, #soundLocations)])
+
+                if (math.random(0, 100) > 50) then
+                    if (math.random(0, 100) > 50) then
+                        sound.Play("coduo/misc/big_shake0"..math.random(1, 2)..".wav", soundLocations[math.random(1, #soundLocations)])
+                    else
+                        sound.Play("coduo/misc/med_shake0"..math.random(1, 2)..".wav", soundLocations[math.random(1, #soundLocations)])
+                    end
+                end
                 nextFlakSound = CurTime() + math.Rand(0.8, 2)
             end
         end
@@ -59,8 +67,16 @@ function FlakHit(pos)
     end
 end
 
+BOMBER_NEXT_FLAK_WARNING = 0
 function StartFlakBarrage()
     BOMBER_FLAK_BARRAGE = true
+
+    if (CurTime() <= BOMBER_NEXT_FLAK_WARNING) then return end
+    BOMBER_NEXT_FLAK_WARNING = CurTime() + 15
+
+    TimerAdd("FLAK_BARRAGE_WARNING_"..CurTime(), math.random(2, 6), 1, function()
+        if (BOMBER_FLAK_BARRAGE) then SendDialogue("coduo/voiceovers/flak_warning_"..math.random(1, 5)..".mp3") end
+    end)
 end
 
 function StopFlakBarrage()

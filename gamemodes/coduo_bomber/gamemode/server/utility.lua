@@ -101,6 +101,10 @@ function OpenBombBay()
     TimerAdd("BOMBER_DropBombs", 25, 1, function()
         DropBombs()
     end)
+    
+    TimerAdd("BOMBER_DropBombs_Dialogue", 21, 1, function()
+        SendDialogue("coduo/voiceovers/bombs_gone.mp3")
+    end)
 end
 
 function CloseBombBay()
@@ -130,6 +134,10 @@ end
 
 function DropBombs()
     FriendliesDropBombs()
+
+    TimerAdd("BOMBER_DropBomb_Hit_Dialogue", 18, 1, function()
+        SendDialogue("coduo/voiceovers/bombs_direct_hit.mp3")
+    end)
     
     for i=1, 8 do
 

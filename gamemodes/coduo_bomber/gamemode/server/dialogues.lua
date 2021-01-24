@@ -1,4 +1,5 @@
 util.AddNetworkString("NET_DIALOGUE")
+
 function SendDialogue(str)
     net.Start("NET_DIALOGUE")
         net.WriteString(str)

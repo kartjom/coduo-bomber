@@ -77,6 +77,7 @@ function CreateBomber(data)
     plane.ball_turret:Spawn()
 end
 
+BOMBER_NEXT_FRIENDLY_DEATH_WARNING = 0
 hook.Add("EntityTakeDamage", "DummyBomberDamageLogic", function(target, dmginfo)
 	if (target.IsBomber && target.CanTakeDamage) then
 		target.Durability = target.Durability - dmginfo:GetDamage()
@@ -95,6 +96,14 @@ hook.Add("EntityTakeDamage", "DummyBomberDamageLogic", function(target, dmginfo)
                 DummyBomberWreckExplode(target)
                 target:Remove()
             end)
+
+            if (CurTime() > BOMBER_NEXT_FRIENDLY_DEATH_WARNING && math.random(1, 100) > 60) then
+                BOMBER_NEXT_FRIENDLY_DEATH_WARNING = CurTime() + 15
+
+                TimerAdd("FRIENDLY_DEATH_WARNING_"..CurTime(), math.random(1, 3), 1, function()
+                    SendDialogue("coduo/voiceovers/friendly_bomber_death_"..math.random(1, 2)..".mp3")
+                end)
+            end
         end
 
         if (target.Durability <= 1250 && !target.EngineDamaged) then

@@ -13,7 +13,7 @@ function StartExplosionShock()
     GetConVar("pp_motionblur_drawalpha"):SetFloat(0.99)
     GetConVar("pp_motionblur_delay"):SetFloat(0)
 
-    timer.Create("StopBlur", 4, 1, StopExplosionShock)
+    timer.Create("StopBlur", 5, 1, StopExplosionShock)
 end
 
 function StopExplosionShock()

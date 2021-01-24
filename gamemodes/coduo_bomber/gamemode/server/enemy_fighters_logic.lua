@@ -48,6 +48,14 @@ function FighterAttackPlayer()
 	if (math.random(0, 100) > 50) then
 		BOMBER_NEXT_FIGHTER_SPAWN_COMMENT = CurTime() + 20
 		GetDialogueFromWaypoint(waypoint)
+
+		if (math.random(0, 100) > 65) then
+			TimerAdd("DIALOGUE_MANY_ENEMIES", math.random(7, 12), 1, function()
+				if (BOMBER_ENEMY_FIGHTERS) then
+					SendDialogue("coduo/voiceovers/many_enemies_"..math.random(1, 4)..".mp3")
+				end
+			end)
+		end
 	end
 end
 
@@ -76,6 +84,15 @@ end
 
 util.AddNetworkString("STOP_MUSIC")
 function StopEnemyFighters()
+
+	if ( !BOMBER_FIRST_WAVE_END && BOMBER_ENEMY_FIGHTERS ) then
+		BOMBER_FIRST_WAVE_END = true
+
+		TimerAdd("FIGHTER_WAVE_END_DIALOGUE_"..CurTime(), math.random(4, 6), 1, function()
+			SendDialogue("coduo/voiceovers/wave_end_1.mp3")
+		end)
+	end
+
     BOMBER_ENEMY_FIGHTERS = false
 
 	net.Start("STOP_MUSIC")

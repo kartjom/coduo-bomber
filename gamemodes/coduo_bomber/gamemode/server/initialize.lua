@@ -47,6 +47,7 @@ function UsefulVariables()
     BOMBER_ENEMY_FIGHTERS = false
 
     BOMBER_FIRST_ENGINE_DOWN = false
+    BOMBER_FIRST_WAVE_END = false
 
     SetGlobalBool("BOMBER_SANDBOX_TOGGLED", false)
 end
