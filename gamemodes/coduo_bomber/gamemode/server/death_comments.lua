@@ -11,7 +11,7 @@ function PlayDeathComment(str)
 end
 
 hook.Add("PlayerDeath", "PlayerDeathComments", function(ply)
-    if (CurTime() <= BOMBER_NEXT_PLAYER_DEATH_COMMENT) then return end
+    if (CurTime() <= BOMBER_NEXT_PLAYER_DEATH_COMMENT || BOMBER_ENDING_SEQUENCE) then return end
 
     if ( GetTurretDistance(ply, "l_waist_turret") <= (75*75) ) then
         PlayDeathComment("coduo/voiceovers/death_lwaist_1.mp3")
@@ -31,7 +31,7 @@ end)
 BOMBER_NEXT_FIGHTER_DEATH_COMMENT = 0
 
 hook.Add("OnEnemyFighterKill", "FighterDeathComments", function(ply)
-    if (CurTime() <= BOMBER_NEXT_FIGHTER_DEATH_COMMENT || !BOMBER_ENEMY_FIGHTERS) then return end
+    if (CurTime() <= BOMBER_NEXT_FIGHTER_DEATH_COMMENT || !BOMBER_ENEMY_FIGHTERS || BOMBER_ENDING_SEQUENCE) then return end
 
     if (math.random(0, 100) > 75) then
         BOMBER_NEXT_FIGHTER_DEATH_COMMENT = CurTime() + 20

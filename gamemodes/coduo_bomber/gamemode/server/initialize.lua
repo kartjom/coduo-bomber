@@ -9,6 +9,8 @@ function InitializeMap()
     CleanUpTimers()
     CleanUpHooks()
 
+    ResetSkyCamera()
+
     UsefulVariables()
 
     CreateTail_Waist()
@@ -30,10 +32,11 @@ function InitializeMap()
     EnemyFightersLogic()
 
     SpawnBombs()
-
     CreateBombersFormation()
 
     CloudsEmitter()
+
+    CleanupEndingSequence()
 end
 
 function UsefulVariables()
@@ -76,4 +79,16 @@ end
 
 function CleanUpPlayers()
     for k,v in pairs(player.GetAll()) do v:SetFrags(0) end
+end
+
+function CleanupEndingSequence()
+    if (BOMBER_ENDING_SEQUENCE) then
+        for k,v in pairs(player.GetAll()) do
+            v:SetNoDraw(false)
+            v:Freeze(false)
+            v:Spawn()
+        end
+    end
+
+    BOMBER_ENDING_SEQUENCE = false
 end

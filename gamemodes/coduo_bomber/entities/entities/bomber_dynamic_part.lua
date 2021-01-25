@@ -65,6 +65,8 @@ if (SERVER) then
 
         self:DamageShake()
         self:DamageSound()
+
+        self:CheckForEnding()
     end
 
     function ENT:DamageShake()
@@ -81,6 +83,25 @@ if (SERVER) then
 
     function ENT:PostDamageComponent()
         /* override */
+    end
+
+    function ENT:CheckForEnding()
+        local parts = ents.FindByClass("bomber_dynamic_part")
+        local wings = ents.FindByClass("bomber_dynamic_wing")
+        local partsNum = #parts + #wings
+
+        local destroyedParts = 0
+
+        for k,v in pairs(parts) do
+            if (v.CurrentDamageLevel > 0 && !self:CanTakeDamage()) then destroyedParts = destroyedParts + 1 end
+        end
+        for k,v in pairs(wings) do
+            if (v.CurrentDamageLevel > 0 && !self:CanTakeDamage()) then destroyedParts = destroyedParts + 1 end
+        end
+
+        if (destroyedParts == partsNum) then
+            BeginEndingSequence()
+        end
     end
 
 end

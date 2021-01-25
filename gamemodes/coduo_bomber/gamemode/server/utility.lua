@@ -146,11 +146,11 @@ function DropBombs()
             bomb:GetPhysicsObject():EnableMotion(true)
             bomb:PhysWake()
 
-            TimerAdd("BOMBER_DestroyBomb_"..i, 7, 1, function()
+            TimerAdd("BOMBER_DestroyBomb_"..i, 5, 1, function()
                 bomb:Remove()
 
                 /* 3D skybox bomb explosion FX */
-                TimerAdd("BOMBER_ExplosionFX_"..i, 8, 1, function()
+                TimerAdd("BOMBER_ExplosionFX_"..i, 9, 1, function()
                     local skyboxPos = Vector(4631.817871, 6228.746094, -15250)
 
                     local effectdata = EffectData()
@@ -174,4 +174,25 @@ function DropBombs()
 
     end
 
+end
+
+function ResetSkyCamera()
+    local skyCameraPos = Vector(4620, 6247, -13876)
+
+    for k,v in pairs(ents.GetAll()) do
+        if (v:GetClass() == "sky_camera") then
+            v:Fire("Kill")
+        end
+    end
+
+    local skyCamera = ents.Create("sky_camera")
+    skyCamera:SetKeyValue("scale", 16)
+    skyCamera:SetKeyValue("fogblend", 1)
+    skyCamera:SetKeyValue("fogstart", 50000)
+    skyCamera:SetKeyValue("fogcolor", "126 124 132")
+    skyCamera:SetKeyValue("fogcolor2", "126 117 117")
+    skyCamera:SetKeyValue("fogend", 80000)
+    skyCamera:SetKeyValue("fogenable", 1)
+    skyCamera:SetPos(skyCameraPos)
+    skyCamera:Spawn()
 end

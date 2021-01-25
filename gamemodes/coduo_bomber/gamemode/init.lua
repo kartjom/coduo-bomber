@@ -19,6 +19,7 @@ include( "server/enemy_fighters_logic.lua" )
 include( "server/net_messages.lua" )
 include( "server/dialogues.lua" )
 include( "server/death_comments.lua" )
+include( "server/ending.lua" )
 //include( "server/debug.lua" ) // stuff for creating waypoints
 
 function GM:PlayerSpawn(ply)
@@ -79,6 +80,14 @@ function GM:CanPlayerEnterVehicle(ply, veh, role)
 		return true
 	end
 end
+
+function GM:IsSpawnpointSuitable(ply, spawnpoint, makeSuitable)
+	return true
+end
+
+hook.Add("CanExitVehicle", "EndingChair", function(veh, ply)
+    return !veh.Ending
+end)
 
 hook.Add("EntityTakeDamage", "ExplosionShock", function(ent, dmginfo)
 	if ( dmginfo:IsDamageType(DMG_BLAST) && ent:IsPlayer() ) then

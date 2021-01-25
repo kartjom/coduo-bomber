@@ -1,6 +1,8 @@
 util.AddNetworkString("NET_DIALOGUE")
 
 function SendDialogue(str)
+    if (BOMBER_ENDING_SEQUENCE) then return end
+
     net.Start("NET_DIALOGUE")
         net.WriteString(str)
     net.Broadcast()
@@ -10,7 +12,8 @@ function DialoguePlayScene(sndTbl)
     /*  { snd = "coduo/voiceovers/luftwaffe_1.mp3", delay = 2 },
         { snd = "coduo/voiceovers/luftwaffe_2.mp3" }
     */
-
+    if (BOMBER_ENDING_SEQUENCE) then return end
+    
     for k,v in pairs(TimersList) do
         if ( string.StartWith(k, "DIALOGUE_SCENE_") ) then
             timer.Remove(k)

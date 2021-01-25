@@ -238,7 +238,7 @@ function DummyDropBombs(plane)
 
             BombProp:EmitSound("coduo/bomber/bomb_whistle0"..math.random(1, 4)..".wav")
 
-            TimerAdd("TIMER_REMOVE_"..name, 6, 1, function()
+            TimerAdd("TIMER_REMOVE_"..name, 5, 1, function()
                 BombProp:Remove()
             end)
         end)
