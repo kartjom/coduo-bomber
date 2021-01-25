@@ -35,6 +35,8 @@ function ENT:Think()
     
     if (self.Tail != NULL && self.Tail:GetCycle() >= 0.98) then
         self.Helper:SetParent(NULL)
+        self.Parachute:SetParent(self.Helper)
+        self.Parachute:SetLocalPos(Vector())
         self.Tail:Remove()
     end
 
@@ -180,6 +182,10 @@ function ENT:ChuteSoundTimer()
         self.Parachute.AutomaticFrameAdvance = true
         self.Parachute:SetKeyValue("DefaultAnim", "deploy")
         self.Parachute:Spawn()
+
+        for k,v in pairs(player.GetHumans()) do
+            v:Freeze(false)
+        end
     end)
 end
 
@@ -190,7 +196,6 @@ function ENT:FadeScreen()
         end)
 
         for k,v in pairs(player.GetHumans()) do
-            v:Freeze(false)
             v:ScreenFade( SCREENFADE.OUT, Color( 0, 0, 0, 255 ), 3, 15 )
         end
     end)
