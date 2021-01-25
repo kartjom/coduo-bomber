@@ -169,6 +169,17 @@ function ENT:ChuteSoundTimer()
         self.EndingBombers = {}
 
         self.Helper:EmitSound("coduo/misc/chute_deploy.wav")
+
+        self.Parachute = ents.Create("prop_dynamic")
+        self.Parachute:SetModel("models/coduo/bomber/ending_parachute.mdl")
+        self.Parachute:SetPos(self.Helper:GetPos())
+        self.Parachute:SetParent(self.Helper)
+        self.Parachute:SetLocalAngles(Angle(0, 0, -90))
+        self.Parachute:PhysicsInit(SOLID_NONE)
+        self.Parachute:SetMoveType(MOVETYPE_NONE)
+        self.Parachute.AutomaticFrameAdvance = true
+        self.Parachute:SetKeyValue("DefaultAnim", "deploy")
+        self.Parachute:Spawn()
     end)
 end
 
