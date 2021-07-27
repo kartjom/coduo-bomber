@@ -63,11 +63,15 @@ function ENT:CreateChair(ply, pos)
     chair:GetPhysicsObject():EnableMotion(false)
     chair.Ending = true
 
+    chair:SetMoveType(MOVETYPE_NONE)
     chair:SetParent(self.Helper)
-    chair:SetLocalPos(Vector())
+    chair:SetPos(self.Helper:GetPos())
 
     table.insert(self.Chairs, chair)
-    ply:EnterVehicle(chair)
+    
+    timer.Simple(0.1, function()
+        ply:EnterVehicle(chair)
+    end)
 end
 
 function ENT:CreateTail()
@@ -82,10 +86,12 @@ function ENT:CreateTail()
 
     self.Helper = ents.Create("prop_dynamic")
     self.Helper:SetModel("models/hunter/plates/plate.mdl")
-    self.Helper:FollowBone(self.Tail, 2)
-    self.Helper:SetLocalPos(Vector())
     self.Helper:SetNoDraw(true)
     self.Helper:Spawn()
+
+    self.Helper:SetMoveType(MOVETYPE_NONE)
+    self.Helper:FollowBone(self.Tail, 2)
+    self.Helper:SetLocalPos(Vector())
 end
 
 function ENT:MovePlaneComponents()

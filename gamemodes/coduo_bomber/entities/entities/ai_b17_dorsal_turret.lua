@@ -35,9 +35,9 @@ if (SERVER) then
         self.Guns:SetLocalPos(Vector())
         self.Guns:SetLocalAngles(Angle(0, self.StandbyVerticalRotation, 0))
         self.Guns:Spawn()
-
-        self:FollowBone(self.Plane, 1)
-        self:SetLocalPos(Vector(-140, 165, 0))
+        
+        self:SetParent(self.Plane, 1)
+        self:SetLocalPos(Vector(80, 100, -430))
         self:SetLocalAngles(Angle())
     end
 
