@@ -71,7 +71,7 @@ end
 
 function GM:CanPlayerEnterVehicle(ply, veh, role)
 	if ( string.StartWith(veh:GetName(), "chair_") ) then
-		if (ply:GetPos():DistToSqr(veh:GetPos()) >= 4750) then
+		if (ply:GetPos():DistToSqr(veh:GetPos()) >= 4750 || BOMBER_CHAIRS_DISABLED == true) then
 			return false
 		else
 			return true

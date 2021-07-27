@@ -90,5 +90,6 @@ function CleanupEndingSequence()
         end
     end
 
+    BOMBER_CHAIRS_DISABLED = false
     BOMBER_ENDING_SEQUENCE = false
 end

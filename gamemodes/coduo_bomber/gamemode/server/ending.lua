@@ -1,6 +1,12 @@
 local centerPos = Vector(-10029.3, 6481.2, -8780.8)
 
 function BeginEndingSequence()
+    for k,v in pairs(player.GetAll()) do
+        v:ExitVehicle()
+    end
+
+    BOMBER_CHAIRS_DISABLED = true
+
     ents.FindByClass("event_manager")[1]:Remove()
     BOMBER_FLAK_BARRAGE = false
     BOMBER_ENEMY_FIGHTERS = false
