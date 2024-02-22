@@ -327,8 +327,6 @@ if (SERVER) then
             ["me109_wreck_lwing"] = true
         }
 
-        local wreckParts = {}
-
         for k,v in pairs(wreckPartNames) do
             local part = ents.Create("prop_physics")
             part:SetModel("models/coduo/bomber/"..v..".mdl")
@@ -341,25 +339,13 @@ if (SERVER) then
                 ParticleEffectAttach("bomber_engine_fire", PATTACH_ABSORIGIN_FOLLOW, part, 0)
             end
 
-            table.insert(wreckParts, part)
+            local movingDir = (-self:GetForward() * self.Speed)
+
+			part:PhysWake()
+			part:GetPhysicsObject():SetVelocity( movingDir * 50 )
+
+			part.ManagedRemoval = CurTime() + 6.5
         end
-
-        for k,v in pairs(wreckParts) do
-            if (v:GetClass() == "prop_physics") then
-                local movingDir = (-self:GetForward() * self.Speed)
-
-                v:PhysWake()
-                v:GetPhysicsObject():SetVelocity( movingDir * 50 )
-            end
-        end
-
-        TimerAdd("TIMER_REMOVE_WRECK_ME109_"..self:EntIndex().."_"..CurTime(), 6, 1, function()
-            for k,v in pairs(wreckParts) do
-                if (IsValid(v)) then
-                    v:Remove()
-                end
-            end
-        end)
     end
 
     function ENT:EmitMuzzleFlash()

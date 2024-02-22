@@ -146,19 +146,16 @@ function DropBombs()
             bomb:GetPhysicsObject():EnableMotion(true)
             bomb:PhysWake()
 
-            TimerAdd("BOMBER_DestroyBomb_"..i, 5, 1, function()
-                bomb:Remove()
+			bomb.ManagedRemoval = CurTime() + 4
 
-                /* 3D skybox bomb explosion FX */
-                TimerAdd("BOMBER_ExplosionFX_"..i, 9, 1, function()
-                    local skyboxPos = Vector(4631.817871, 6228.746094, -15250)
+            TimerAdd("BOMBER_ExplosionFX_"..i, 14, 1, function()
+				local skyboxPos = Vector(4631.817871, 6228.746094, -15250)
 
-                    local effectdata = EffectData()
-                    effectdata:SetOrigin( skyboxPos + Vector(0, 75 * i, 0) )
-                    effectdata:SetScale(0.025)
-                    util.Effect("Explosion", effectdata)
-                end)
-            end)
+				local effectdata = EffectData()
+				effectdata:SetOrigin( skyboxPos + Vector(0, 75 * i, 0) )
+				effectdata:SetScale(0.025)
+				util.Effect("Explosion", effectdata)
+			end)
 
             local bombReleaseSound = ""
 

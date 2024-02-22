@@ -157,8 +157,6 @@ function DummyBomberWreckExplode(plane)
 		["b17_wreck_tail"] = true
     }
 
-    local wreckParts = {}
-
     local explosionPos = plane.helper:GetPos()
 
 	for k,v in pairs(wreckPartNames) do
@@ -173,25 +171,13 @@ function DummyBomberWreckExplode(plane)
             ParticleEffectAttach("bomber_engine_fire", PATTACH_ABSORIGIN_FOLLOW, part, 0)
         end
 
-        table.insert(wreckParts, part)
+        local dir = VectorRand(-2000, 2000)
+
+		part:PhysWake()
+		part:GetPhysicsObject():SetVelocity(dir)
+
+		part.ManagedRemoval = CurTime() + 6
 	end
-
-    for k,v in pairs(wreckParts) do
-		if (v:GetClass() == "prop_physics") then
-			local dir = VectorRand(-2000, 2000)
-
-			v:PhysWake()
-			v:GetPhysicsObject():SetVelocity( dir )
-		end
-	end
-
-    TimerAdd("TIMER_REMOVE_WRECK_"..plane:GetName(), 6, 1, function()
-        for k,v in pairs(wreckParts) do
-            if (IsValid(v)) then
-                v:Remove()
-            end
-         end
-    end)
 end
 
 function SetContrails(plane)
@@ -237,10 +223,7 @@ function DummyDropBombs(plane)
             end
 
             BombProp:EmitSound("coduo/bomber/bomb_whistle0"..math.random(1, 4)..".wav")
-
-            TimerAdd("TIMER_REMOVE_"..name, 5, 1, function()
-                BombProp:Remove()
-            end)
+			BombProp.ManagedRemoval = CurTime() + 4
         end)
     end
 end

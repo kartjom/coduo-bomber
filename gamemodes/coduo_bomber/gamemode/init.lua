@@ -100,5 +100,18 @@ hook.Add("EntityTakeDamage", "ExplosionShock", function(ent, dmginfo)
 	end
 end)
 
+local RemoveManagedEntities_NextThink = 0
+hook.Add("Think", "RemoveManagedEntities", function()
+	if (CurTime() < RemoveManagedEntities_NextThink) then return end
+
+	for _, ent in ents.Iterator() do
+		if (ent.ManagedRemoval != nil && CurTime() >= ent.ManagedRemoval) then
+			ent:Remove()
+		end
+	end
+
+	RemoveManagedEntities_NextThink = RemoveManagedEntities_NextThink + 0.5
+end)
+
 hook.Add("InitPostEntity", "InitializeMap", InitializeMap)
 hook.Add("PostCleanupMap", "InitializeMap", InitializeMap)
