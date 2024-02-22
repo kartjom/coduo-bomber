@@ -78,12 +78,17 @@ function CleanUpHooks()
 end
 
 function CleanUpPlayers()
-    for k,v in pairs(player.GetAll()) do v:SetFrags(0) end
+    for k,v in pairs(player.GetAll()) do
+		v:ExitVehicle()
+		v:CrosshairDisable()
+		v:SetFrags(0)
+	end
 end
 
 function CleanupEndingSequence()
     if (BOMBER_ENDING_SEQUENCE) then
         for k,v in pairs(player.GetAll()) do
+			v:ExitVehicle()
             v:SetNoDraw(false)
             v:Freeze(false)
             v:Spawn()
