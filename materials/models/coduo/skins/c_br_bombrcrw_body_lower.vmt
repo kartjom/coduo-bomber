@@ -2,4 +2,5 @@
 {
 	$basetexture "models/coduo/skins/c_br_bombrcrw_body_lower"
 	$alphatest 1
+	$nocull 1
 }
