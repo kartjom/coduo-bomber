@@ -13,7 +13,7 @@ hook.Add("HUDPaint", "HUD_DrawCrosses", function()
     if ( LocalPlayer():Frags() <= 0 ) then return end
 
     local initX = 0
-    local initY = ScrH() - 150
+    local initY = ScrH() - 180
 
     surface.SetDrawColor(255, 255, 255, 150)
     surface.SetMaterial(crossIcon)
