@@ -55,6 +55,7 @@ end
 
 function GM:PlayerEnteredVehicle(ply, veh, nrole)
 	ply:SetCollisionGroup(11)
+	ply.ExitAngles = ply:LocalEyeAngles()
 end
 
 function GM:PlayerLeaveVehicle(ply, veh)
@@ -62,6 +63,10 @@ function GM:PlayerLeaveVehicle(ply, veh)
 
 	if (veh.ExitPos != nil) then
 		ply:SetPos(veh.ExitPos)
+	end
+
+	if (ply.ExitAngles != nil) then
+		ply:SetEyeAngles(ply.ExitAngles)
 	end
 
 	TimerAdd("TIMER_VEH_EXIT_"..ply:GetName().."_"..CurTime(), 0.05, 1, function()
