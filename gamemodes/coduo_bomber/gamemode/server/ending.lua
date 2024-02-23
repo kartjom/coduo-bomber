@@ -1,6 +1,9 @@
 local centerPos = Vector(-10029.3, 6481.2, -8780.8)
 
 function BeginEndingSequence()
+	if (BOMBER_ENDING_INITIALIZED) then return end
+	BOMBER_ENDING_INITIALIZED = true
+
     for k,v in pairs(player.GetAll()) do
         v:ExitVehicle()
     end
