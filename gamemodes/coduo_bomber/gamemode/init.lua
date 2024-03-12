@@ -104,13 +104,21 @@ local RemoveManagedEntities_NextThink = 0
 hook.Add("Think", "RemoveManagedEntities", function()
 	if (CurTime() < RemoveManagedEntities_NextThink) then return end
 
-	for _, ent in ents.Iterator() do
-		if (ent.ManagedRemoval != nil && CurTime() >= ent.ManagedRemoval) then
-			ent:Remove()
+	if (ents.Iterator == nil) then -- Fallback to legacy iteration if not on beta branch
+		for _, ent in ipairs(ents.GetAll()) do
+			if (ent.ManagedRemoval != nil && CurTime() >= ent.ManagedRemoval) then
+				ent:Remove()
+			end
+		end
+	else
+		for _, ent in ents.Iterator() do
+			if (ent.ManagedRemoval != nil && CurTime() >= ent.ManagedRemoval) then
+				ent:Remove()
+			end
 		end
 	end
 
-	RemoveManagedEntities_NextThink = RemoveManagedEntities_NextThink + 0.5
+	RemoveManagedEntities_NextThink = RemoveManagedEntities_NextThink + 0.25
 end)
 
 hook.Add("InitPostEntity", "InitializeMap", InitializeMap)
