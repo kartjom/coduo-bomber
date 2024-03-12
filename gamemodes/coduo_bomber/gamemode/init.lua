@@ -35,6 +35,8 @@ function GM:PlayerSpawn(ply)
 	ply:SetCollisionGroup(COLLISION_GROUP_WEAPON)
 
 	ply:StopExplosionShock()
+
+	ply:ConCommand("cl_showhints 0")
 end
 
 function GM:PlayerDeath(ply)
