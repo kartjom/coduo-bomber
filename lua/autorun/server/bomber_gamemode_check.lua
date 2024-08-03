@@ -5,7 +5,7 @@ hook.Add("PlayerInitialSpawn", "HookCheckGamemodeBomber", function(ply)
 			PrintMessage(HUD_PRINTTALK, "Wrong gamemode! Reloading in 10 seconds..")
 			timer.Create("BomberChangeGamemode", 10, 1, function()		
 				RunConsoleCommand("gamemode", "coduo_bomber")
-				RunConsoleCommand("map", "coduo_bomber")
+				RunConsoleCommand("changelevel", "coduo_bomber")
 			end)
 		else
 			hook.Remove("PlayerInitialSpawn", "HookCheckGamemodeBomber")
