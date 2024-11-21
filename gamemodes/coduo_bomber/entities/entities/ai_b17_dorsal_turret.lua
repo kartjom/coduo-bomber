@@ -17,7 +17,7 @@ if (SERVER) then
     ENT.Damage = 2
     ENT.Range = 9000
 
-    ENT.RotationSpeed = 0.1
+    ENT.RotationSpeed = 4.5
 
     ENT.vMin = -35
     ENT.vMax = 0
@@ -106,8 +106,8 @@ if (SERVER) then
             gunAngle.y = self.StandbyVerticalRotation
         end
 
-        local smoothTurretAngle = LerpAngle(self.RotationSpeed, self:GetLocalAngles(), turretAngle)
-        local smoothGunAngle = LerpAngle(self.RotationSpeed, self.Guns:GetLocalAngles(), gunAngle)
+        local smoothTurretAngle = LerpAngle(self.RotationSpeed * FrameTime(), self:GetLocalAngles(), turretAngle)
+        local smoothGunAngle = LerpAngle(self.RotationSpeed * FrameTime(), self.Guns:GetLocalAngles(), gunAngle)
 
         self:SetLocalAngles(smoothTurretAngle)
         self.Guns:SetLocalAngles(smoothGunAngle)

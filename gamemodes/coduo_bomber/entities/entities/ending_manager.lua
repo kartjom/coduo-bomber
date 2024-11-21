@@ -41,11 +41,13 @@ function ENT:Think()
     end
 
     if (self.Tail == NULL && self.Helper:GetPos().z >= -13000) then
-        self.Helper:SetPos( self.Helper:GetPos() - Vector(0, -2, 6) )
+        local fallingSpeed = Vector(0, -140, 400) * FrameTime()
+        self.Helper:SetPos( self.Helper:GetPos() - fallingSpeed )
     end
 
     for k,v in pairs(self.EndingBombers) do
-        v:SetPos( v:GetPos() - Vector(0, 5, 0) )
+        local bomberSpeed = Vector(0, 400, 0) * FrameTime()
+        v:SetPos( v:GetPos() - bomberSpeed )
     end
 
     self:NextThink(CurTime())

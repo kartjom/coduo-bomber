@@ -75,8 +75,8 @@ if (SERVER) then
                 continue
             end
 
-            /* Move all landscapes on the Y axis (0.55 SHOULD be almost exact speed as moving ground) */
-            v:SetPos( v:GetPos() + Vector(0, 0.55, 0) )
+            /* Move all landscapes on the Y axis (40 SHOULD be almost exact speed as moving ground) */
+            v:SetPos( v:GetPos() + Vector(0, 40 * FrameTime(), 0) )
 
             /* Remove landscapes that are too far away */
             if (v:GetPos().y >= 15000) then v:Remove() end

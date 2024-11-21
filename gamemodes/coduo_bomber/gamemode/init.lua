@@ -120,7 +120,7 @@ hook.Add("Think", "RemoveManagedEntities", function()
 		end
 	end
 
-	RemoveManagedEntities_NextThink = RemoveManagedEntities_NextThink + 0.25
+	RemoveManagedEntities_NextThink = RemoveManagedEntities_NextThink + 0.1
 end)
 
 hook.Add("InitPostEntity", "InitializeMap", InitializeMap)

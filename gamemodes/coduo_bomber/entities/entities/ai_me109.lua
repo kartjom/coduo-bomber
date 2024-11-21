@@ -15,8 +15,8 @@ sound.Add({
 if (SERVER) then
 
     ENT.Durability = 215
+    ENT.Speed = 2700
 
-    ENT.Speed = 37
     ENT.Target = nil
     
     ENT.WaypointTable = nil
@@ -122,7 +122,7 @@ if (SERVER) then
     end
 
     function ENT:TickMove()
-        self:SetPos( self:GetPos() - self:GetForward() * self.Speed )
+        self:SetPos( self:GetPos() - self:GetForward() * self.Speed * FrameTime() )
 
         if ( !self:IsInWorld() ) then self:Remove() end
     end
@@ -207,7 +207,7 @@ if (SERVER) then
         angle.z = angle.z + self.RollAmount
         angle.x = self.PitchAmount
 
-        local smoothAngle = LerpAngle(0.050, self:GetAngles(), angle)
+        local smoothAngle = LerpAngle(8 * FrameTime(), self:GetAngles(), angle)
 
         self:SetAngles(smoothAngle)
     end

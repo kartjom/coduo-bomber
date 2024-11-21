@@ -6,6 +6,7 @@ ENT.Spawnable = true
 if (SERVER) then
 
     ENT.Owner = nil
+    ENT.AllowCrouch = true
 
     function ENT:Initialize()
         self:SetModel("models/hunter/blocks/cube025x025x025.mdl")
@@ -75,6 +76,11 @@ if (SERVER) then
             return false
         end
 
+        if ( !self.AllowCrouch && self.Owner:Crouching() ) then
+            self:HandleDismantle()
+            return false
+        end
+
         return true
     end
 
@@ -112,7 +118,7 @@ if (SERVER) then
 
         angle.x = math.Clamp(angle.x, -vCap, vCap)
         angle.y = math.Clamp(angle.y, -hCap, hCap)
-        self.Gun.SmoothAngle = LerpAngle( .15, self.Gun.SmoothAngle, angle )
+        self.Gun.SmoothAngle = LerpAngle( 5 * FrameTime(), self.Gun.SmoothAngle, angle )
         self.Gun:SetLocalAngles(self.Gun.SmoothAngle)
     end
 

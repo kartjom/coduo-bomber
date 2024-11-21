@@ -7,6 +7,7 @@ ENT.Spawnable = true
 if (SERVER) then
 
     ENT.Owner = nil
+    ENT.AllowCrouch = false
 
     function ENT:PlayerPosition()
         return self:LocalToWorld(Vector(0, 0, 43.94))
@@ -93,7 +94,7 @@ if (SERVER) then
 
         angle.x = math.Clamp(angle.x, -vCap, 0)
         angle.y = math.Clamp(angle.y, -hCap, hCap)
-        self.Gun.SmoothAngle = LerpAngle( .15, self.Gun.SmoothAngle, angle )
+        self.Gun.SmoothAngle = LerpAngle( 10 * FrameTime(), self.Gun.SmoothAngle, angle )
         self.Gun:SetLocalAngles(self.Gun.SmoothAngle)
         
         local podBaseRotation = Angle(0, self.Gun.SmoothAngle.y, 0)
