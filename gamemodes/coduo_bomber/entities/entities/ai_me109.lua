@@ -131,7 +131,7 @@ if (SERVER) then
         if ( !target || target == NULL ) then return end
 
         local angle = self:GetRotationTowardsTarget(target)
-        local smoothAngle = LerpAngle(0.025, self:GetAngles(), angle)
+        local smoothAngle = LerpAngle(1.9 * FrameTime(), self:GetAngles(), angle)
 
         self:SetAngles(smoothAngle)
     end
