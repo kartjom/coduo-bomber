@@ -18,8 +18,8 @@ if (SERVER) then
         HookAdd("OnEntityCreated", "ManageCreatedCity", function(ent)       
             if (ent:GetClass() == "func_brush") then
                 TimerAdd("LANDSCAPE_TEST_"..ent:EntIndex(), 0.01, 1, function()
-                    if (self.Landscapes[ent:GetName()]) then
-                        if ( IsValid(ent) ) then self:OnCityCreate(ent) end
+                    if (IsValid(ent) && self.Landscapes[ent:GetName()]) then
+                        self:OnCityCreate(ent)
                     end
                 end)
             end

@@ -46,6 +46,8 @@ function ENT:Think()
     end
 
     for k,v in pairs(self.EndingBombers) do
+        if ( !IsValid(v) ) then continue end
+
         local bomberSpeed = Vector(0, 400, 0) * FrameTime()
         v:SetPos( v:GetPos() - bomberSpeed )
     end

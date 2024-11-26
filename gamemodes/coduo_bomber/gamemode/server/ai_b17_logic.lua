@@ -92,6 +92,8 @@ hook.Add("EntityTakeDamage", "DummyBomberDamageLogic", function(target, dmginfo)
             
             /* Remove bomber at the end of sequence */
             TimerAdd("BOMBER_"..target:GetName().."_Kill", 11, 1, function()
+                if ( !IsValid(target) ) then return end
+
                 sound.Play("coduo/bomber/bomber_explode01.mp3", soundLocations[target.ExplodePosID])
                 DummyBomberWreckExplode(target)
                 target:Remove()
