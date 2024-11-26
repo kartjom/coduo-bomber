@@ -5,7 +5,15 @@ function BeginEndingSequence()
 	BOMBER_ENDING_INITIALIZED = true
 
     for k,v in pairs(player.GetAll()) do
+        if (!v:Alive()) then
+            v:Spawn()
+        end
+        
         v:ExitVehicle()
+
+        if (v:GetMoveType() == MOVETYPE_NOCLIP) then
+            v:SetMoveType(MOVETYPE_WALK)
+        end      
     end
 
     BOMBER_CHAIRS_DISABLED = true

@@ -52,7 +52,11 @@ function GM:PlayerSpray(ply)
 end
 
 function GM:PlayerNoClip(ply)
-	return GetGlobalBool("BOMBER_SANDBOX_TOGGLED")
+	return GetGlobalBool("BOMBER_SANDBOX_TOGGLED") && !BOMBER_ENDING_INITIALIZED
+end
+
+function GM:CanPlayerSuicide(ply)
+	return !BOMBER_ENDING_INITIALIZED
 end
 
 function GM:PlayerEnteredVehicle(ply, veh, nrole)
